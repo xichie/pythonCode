@@ -77,7 +77,7 @@ def generate_data2():
     print(result.shape)
 
     #save 
-    np.savetxt(r"E:\Hadoop\datasets\3个人工大数据集\类标在第一列\gauss2.txt", result, fmt = "%.5f")
+    np.savetxt(r"C:\Users\qjx\Desktop\gauss2.txt", result, fmt = "%.5f")
     
     # plot 
     plt.figure()
@@ -92,25 +92,26 @@ def generate_data1():
     #generate
     mean = [1.0, 1.0]
     cov = [[0.6, -0.2], [-0.2, 0.6]]
-    x1 = np.random.multivariate_normal(mean, cov, size = [500000])
+    x1 = np.random.multivariate_normal(mean, cov, size = [5000])
     x1 = np.c_[np.full([x1.shape[0], 1], 0), x1]
 
     mean = [2.5, 2.5]
-    cov = [[0.2, -0.1], [-0.1, 0.2]]
-    x2 = np.random.multivariate_normal(mean, cov, size = [500000])
+    # cov = [[0.2, -0.1], [-0.1, 0.2]]
+    cov = [[0.6, -0.2], [-0.2, 0.6]]
+    x2 = np.random.multivariate_normal(mean, cov, size = [5000])
     x2 = np.c_[np.full([x2.shape[0], 1], 1), x2]
 
     #plot
     plt.figure()
-    plt.scatter(x1[:,1], x1[:,2])
-    plt.scatter(x2[:,1], x2[:,2])
+    plt.scatter(x1[:,1], x1[:,2], c='r', marker='+')
+    plt.scatter(x2[:,1], x2[:,2], c='b', marker='_')
     plt.show()
 
     #merge
     result = np.r_[x1,x2]
     np.random.shuffle(result)
     #save 
-    #np.savetxt(r"E:\Hadoop\datasets\3个人工大数据集\类标在第一列\gauss1.txt", result, fmt = "%.5f")
+    np.savetxt(r"C:\Users\qjx\Desktop\gauss1.txt", result, fmt = "%.5f")
 
 if __name__ == "__main__":
     generate_data1()
